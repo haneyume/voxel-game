@@ -4,10 +4,10 @@ import * as THREE from 'three';
 import { useLoader } from '@react-three/fiber';
 import { usePlane } from '@react-three/cannon';
 
-import grass from './assets/grass.jpg';
+import grass from '../assets/grass.jpg';
 
-export const Ground = (props) => {
-  const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0], ...props }));
+export const Ground = () => {
+  const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0] }));
 
   const texture = useLoader(THREE.TextureLoader, grass);
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;

@@ -1,8 +1,13 @@
 import React from 'react';
 
+interface VoxelType {
+  type: string;
+  position: number[];
+}
+
 interface AppContextProps {
-  voxels: React.ReactNode[];
-  setVoxels: React.Dispatch<React.SetStateAction<React.ReactNode[]>>;
+  voxels: VoxelType[];
+  setVoxels: React.Dispatch<React.SetStateAction<VoxelType[]>>;
 }
 
 export const AppContext = React.createContext<AppContextProps>(undefined!);
@@ -12,7 +17,16 @@ interface AppProviderProps {
 }
 
 export const AppProvider = ({ children }: AppProviderProps) => {
-  const [voxels, setVoxels] = React.useState<React.ReactNode[]>([]);
+  const [voxels, setVoxels] = React.useState<VoxelType[]>([]);
+
+  React.useEffect(() => {
+    setVoxels([{ type: '', position: [0, 0, -10] }]);
+  }, []);
+
+  // React.useEffect(() => {
+  //   // @ts-ignore
+  //   window.voxels = voxels;
+  // }, [voxels]);
 
   return (
     <AppContext.Provider

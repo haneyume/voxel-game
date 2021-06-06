@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { App } from './App';
 import { AppProvider } from './AppContext';
 
+import 'tailwindcss/tailwind.css';
 import './styles.css';
 
 ReactDOM.render(
